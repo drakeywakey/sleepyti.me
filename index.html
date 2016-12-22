@@ -2,8 +2,28 @@
 <html>
 	<head>
 		<title>Keep track of your sleep and mood</title>
+		<link href="main.css" rel="stylesheet" />
 	</head>
 	<body>
-		<h1>Sleepyti.me</h1>
+		<header>
+			<h1>Sleepyti.me</h1>
+			<div id="login-container">
+				<button>Login</button>
+				<button>Sign Up</button>
+			</div>
+		</header>
+		<form>
+			<span>I went to sleep at: </span><input type="text" name="sleepTime"><br />
+			<span>Today I woke up at: </span><input type="text" name="wakeTime"><br />
+			<span>I got out of bed at: </span><input type="text" name="outOfBed"><br />
+			<span>And I felt: </span>
+			<select name="mood">
+				<option value="great">Great</option>
+				<option value="good">Good</option>
+				<option value="fair">Fair</option>
+				<option value="bad">Bad</option>
+				<option value="awful">Awful</option>
+			</select>
+		</form>
 	</body>
 </html>
