@@ -13,19 +13,24 @@
 			</div>
 		</header>
 		<form action="/sleepEntry" method="POST">
-			<span>I went to bed at: </span><input type="text" name="inBed"><br />
-			<span>I went to sleep at: </span><input type="text" name="sleepTime"><br />
-			<span>I woke up at: </span><input type="text" name="wakeTime"><br />
-			<span>I got out of bed at: </span><input type="text" name="outOfBed"><br />
-			<span>And I felt: </span>
-			<select name="mood">
-				<option value="great">Great</option>
-				<option value="good">Good</option>
-				<option value="fair">Fair</option>
-				<option value="bad">Bad</option>
-				<option value="awful">Awful</option>
-			</select><br />
+			<span>I went to sleep at:
+				<select name="sleepHour"></select>
+				<select name="sleepMinute"></select>
+				<select name="sleepMeridian">
+					<option value="AM">AM</option>
+					<option value="PM">PM</option>
+				</select>
+			</span><br />
+			<span>I woke up at:
+				<select name="wakeHour"></select>
+				<select name="wakeMinute"></select>
+				<select name="wakeMeridian">
+					<option value="AM">AM</option>
+					<option value="PM">PM</option>
+				</select>
+			</span><br />
 			<button type="submit">Submit</button>
 		</form>
+		<script src="js/index.js"></script>
 	</body>
 </html>

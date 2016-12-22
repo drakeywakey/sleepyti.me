@@ -1,7 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-app.use("/styles", express.static(__dirname + '/styles'));
+app.use('/styles', express.static(__dirname + '/styles'));
+app.use('/js', express.static(__dirname + '/js'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3000, function () {
