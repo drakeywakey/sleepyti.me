@@ -12,7 +12,7 @@
 				<button>Sign Up</button>
 			</div>
 		</header>
-		<form>
+		<form action="/sleepEntry" method="POST">
 			<span>I went to bed at: </span><input type="text" name="inBed"><br />
 			<span>I went to sleep at: </span><input type="text" name="sleepTime"><br />
 			<span>I woke up at: </span><input type="text" name="wakeTime"><br />
@@ -24,7 +24,8 @@
 				<option value="fair">Fair</option>
 				<option value="bad">Bad</option>
 				<option value="awful">Awful</option>
-			</select>
+			</select><br />
+			<button type="submit">Submit</button>
 		</form>
 	</body>
 </html>
