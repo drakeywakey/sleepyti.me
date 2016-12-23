@@ -1,2 +1,2 @@
-var timeSelectPopulator = require('./TimeSelectPopulator.js');
+var timeSelectPopulator = require('./timeSelectPopulator.js');
 timeSelectPopulator();
