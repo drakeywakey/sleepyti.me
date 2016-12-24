@@ -9,6 +9,11 @@ module.exports = function () {
 		option = document.createElement('option');
 		option.value = index;
 		option.textContent = index;
+
+		if (index === 10) {
+			option.setAttribute('selected', 'selected');
+		}
+
 		fragment.appendChild(option);
 	}
 

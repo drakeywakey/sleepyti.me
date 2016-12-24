@@ -26,10 +26,14 @@ MongoClient.connect(mongoUrl, function (err, database) {
 });
 
 app.get('/', function (req, res) {
-	var cursor = db.collection('sleep-times').find().toArray(function(err, results) {
-		console.log(results);
+	db.collection('sleep-times').find().toArray(function(err, results) {
+		if (err) {
+			console.error(err);
+		}
+		else {
+			res.render('./index.ejs', { sleptHours: false, sleepTimes: results });
+		}
 	});
-	res.render('./index.ejs', { sleptHours: false });
 });
 
 app.post('/sleepEntry', function (req, res) {
@@ -49,6 +53,6 @@ app.post('/sleepEntry', function (req, res) {
 			console.log('saved to the db');
 		}
 	});
-
-	res.render('./index.ejs', data);
+	res.redirect('/');
+	//res.render('./index.ejs', data);
 });

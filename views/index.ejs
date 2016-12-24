@@ -37,6 +37,13 @@
 			<% if(sleptHours !== false)  { %>
 				<h1><%= 'You slept for ' + sleptHours + ' hours and ' + sleptMinutes + ' minutes.' %></h1>
 			<% } %>
+			<ul class="sleepTimes">
+			<% for(var i = 0; i < sleepTimes.length; i++) { %>
+				<li class="sleepTime">
+					<span><%= 'On ' + sleepTimes[i].date + ' I slept for ' + sleepTimes[i].sleptHours + ' hours and ' + sleepTimes[i].sleptMinutes + ' minutes.'%></span>
+				</li>
+			<% } %>
+			</ul>
 		</form>
 		<script src="../js/bundle.js"></script>
 	</body>
