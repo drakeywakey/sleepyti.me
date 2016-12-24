@@ -23,10 +23,10 @@ SleepCalculator.prototype.calculateSleep = function (data) {
 		sleepTime.setDate(sleepTime.getDate() - 1);
 	}
 
-	sleepTime.setHours(sleepMeridian === 'AM' ? sleepHour : parseInt(sleepHour) + 12);
+	sleepTime.setHours(sleepMeridian === 'AM' ? sleepHour % 12 : parseInt(sleepHour) + 12);
 	sleepTime.setMinutes(sleepMinute);
 
-	wakeTime.setHours(wakeMeridian === 'AM' ? wakeHour : parseInt(wakeHour) + 12);
+	wakeTime.setHours(wakeMeridian === 'AM' ? wakeHour % 12 : parseInt(wakeHour) + 12);
 	wakeTime.setMinutes(wakeMinute);
 
 	this.sleptHours = Math.floor((wakeTime - sleepTime) / msPerHour);

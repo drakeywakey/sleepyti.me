@@ -34,7 +34,7 @@
 				</select>
 			</span><br />
 			<button type="submit">Submit</button>
-			<% if(sleptHours)  { %>
+			<% if(sleptHours !== undefined)  { %>
 				<h1><%= 'You slept for ' + sleptHours + ' hours and ' + sleptMinutes + ' minutes.' %></h1>
 			<% } %>
 		</form>
