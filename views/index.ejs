@@ -34,8 +34,10 @@
 				</select>
 			</span><br />
 			<button type="submit">Submit</button>
+			<% if(sleptHours)  { %>
+				<h1><%= 'You slept for ' + sleptHours + ' hours and ' + sleptMinutes + ' minutes.' %></h1>
+			<% } %>
 		</form>
 		<script src="../js/bundle.js"></script>
-		<script type="text/javascript" src="ejs_production.js"></script>
 	</body>
 </html>

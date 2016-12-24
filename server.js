@@ -13,7 +13,7 @@ app.listen(3000, function () {
 });
 
 app.get('/', function (req, res) {
-	res.render(__dirname + '/views/index.ejs', {});
+	res.render('./index.ejs', { sleptHours: false });
 });
 
 app.post('/sleepEntry', function (req, res) {
@@ -22,8 +22,5 @@ app.post('/sleepEntry', function (req, res) {
 	calculator = new Calculator();
 	calculator.calculateSleep(req.body);
 
-	data.sleptHours = calculator.sleptHours;
-	data.sleptMinutes = calculator.sleptMinutes;
-
-	res.render(__dirname + '/views/index.ejs', data);
+	res.render('./index.ejs', calculator);
 });
