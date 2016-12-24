@@ -13,12 +13,12 @@ app.use('/js', express.static(__dirname + '/js'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-MongoClient.connect(mongoUrl, function (err, datab) {
+MongoClient.connect(mongoUrl, function (err, database) {
 	if (err) {
 		return console.error(err);
 	}
 	else {
-		db = datab;
+		db = database;
 		app.listen(3000, function () {
 			console.log('listening on port 3000');
 		});
@@ -26,6 +26,9 @@ MongoClient.connect(mongoUrl, function (err, datab) {
 });
 
 app.get('/', function (req, res) {
+	var cursor = db.collection('sleep-times').find().toArray(function(err, results) {
+		console.log(results);
+	});
 	res.render('./index.ejs', { sleptHours: false });
 });
 
@@ -35,8 +38,10 @@ app.post('/sleepEntry', function (req, res) {
 
 	calculator = new Calculator();
 	calculator.calculateSleep(data);
+	data.sleptHours = calculator.sleptHours;
+	data.sleptMinutes = calculator.sleptMinutes;
 
-	db.collection('test').save(data, function (err, result) {
+	db.collection('sleep-times').save(data, function (err, result) {
 		if (err) {
 			return console.error(err);
 		}
@@ -45,5 +50,5 @@ app.post('/sleepEntry', function (req, res) {
 		}
 	});
 
-	res.render('./index.ejs', calculator);
+	res.render('./index.ejs', data);
 });
