@@ -10,8 +10,8 @@ module.exports = function () {
 		option.value = index;
 		option.textContent = index;
 
-		if (index === 10) {
-			option.setAttribute('selected', 'selected');
+		if (index === 11) {
+			option.selected = true;
 		}
 
 		fragment.appendChild(option);
@@ -20,6 +20,9 @@ module.exports = function () {
 	clone = fragment.cloneNode(true);
 	document.querySelector('select[name="sleepHour"]').appendChild(fragment);
 	document.querySelector('select[name="wakeHour"]').appendChild(clone);
+
+	//terrible awful workaround crap hack omg I'm sorry I'm sorry
+	document.querySelector('select[name="wakeHour"]').querySelector('option[value="7"]').selected = true;
 
 	for (index = 0; index <= 59; index++) {
 		option = document.createElement('option');
