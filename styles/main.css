@@ -9,3 +9,13 @@ header {
   stroke: steelblue;
   stroke-width: 1.5px;
 }
+
+.svg-div {
+	height: 500px;
+	width: 960px;
+}
+
+svg {
+	height: 500px;
+	width: 960px;
+}

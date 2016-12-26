@@ -1,4 +1,5 @@
 var express = require('express');
+var fs = require('fs');
 var bodyParser = require('body-parser');
 var app = express();
 var Calculator = require('./js/SleepCalculator.js');
@@ -12,9 +13,6 @@ app.use('/resources', express.static(__dirname + '/resources'));
 app.use('/styles', express.static(__dirname + '/styles'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
-//need to look into app.locals -- is this a common/usable pattern?
-app.locals.chartHelper = require('./js/chartHelper.js');
 
 MongoClient.connect(mongoUrl, function (err, database) {
 	if (err) {
@@ -34,7 +32,18 @@ app.get('/', function (req, res) {
 			console.error(err);
 		}
 		else {
-			res.render('./index.ejs', { sleptHours: false, sleepTimes: results });
+			// oh boy. this is getting gross.
+			// Couldn't figure out a good way to get the data from here to the client js for d3 to use
+			// soooooo we're gonna save the data to a file, and read from the file on the client ://// groooossss
+			fs.writeFile(__dirname + '/resources/test.json', JSON.stringify(results), function (error) {
+				if (error) {
+					console.error(error);
+				}
+				else {
+					res.sendFile(__dirname + '/views/index.html');
+					//res.render('./index.ejs', { sleptHours: false, sleepTimes: results });
+				}
+			});
 		}
 	});
 });
