@@ -8,10 +8,13 @@ var dbuser = 'drakeywakey';
 var dbpassword = 'drakobian';
 var mongoUrl = 'mongodb://' + dbuser + ':' + dbpassword + '@ds145188.mlab.com:45188/sleep-times';
 
+app.use('/resources', express.static(__dirname + '/resources'));
 app.use('/styles', express.static(__dirname + '/styles'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+//need to look into app.locals -- is this a common/usable pattern?
+app.locals.chartHelper = require('./js/chartHelper.js');
 
 MongoClient.connect(mongoUrl, function (err, database) {
 	if (err) {
@@ -50,7 +53,7 @@ app.post('/sleepEntry', function (req, res) {
 			return console.error(err);
 		}
 		else {
-			console.log('saved to the db');
+			console.log('saved', data, 'to the db');
 		}
 	});
 	res.redirect('/');
