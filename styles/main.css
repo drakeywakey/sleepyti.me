@@ -1,21 +1,48 @@
-header {
+* {
+	margin: 0;
+	padding: 0;
+}
+
+button {
 	background: #555;
+	border: 2px solid #4ecdc4;
+	border-radius: 10px;
+	color: #fff;
+	height: 30px;
+	width: 75px;
+}
+
+header {
+	align-items: center;;
+	background: #555;
+	color: #fff;
 	display: flex;
+	height: 50px;
 	justify-content: space-between;
 }
 
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+header h1 {
+	color: #4ecdc4;
 }
 
-.svg-div {
-	height: 500px;
+.data-container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.chart-container {
 	width: 960px;
 }
 
-svg {
-	height: 500px;
-	width: 960px;
+.form-container {
+	align-items: center;
+	display: flex;
+	height: 300px;
+}
+
+#login-container {
+	align-items: center;
+	display: flex;
+	justify-content: space-around;
+	width: 200px;
 }

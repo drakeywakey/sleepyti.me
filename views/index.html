@@ -6,35 +6,40 @@
 	</head>
 	<body>
 		<header>
-			<h1>Sleepyti.me</h1>
+			<h1>Bedti.me</h1>
 			<div id="login-container">
 				<button>Login</button>
 				<button>Sign Up</button>
 			</div>
 		</header>
-		<form action="/sleepEntry" method="POST">
-			<span>I went to sleep at:
-				<select name="sleepHour"></select>
-				<select name="sleepMinute"></select>
-				<select name="sleepMeridian">
-					<option value="AM">AM</option>
-					<option selected value="PM">PM</option>
-				</select>
-				<select name="sleepDay">
-					<option value="yesterday">Yesterday</option>
-					<option value="today">Today</option>
-				</select>
-			</span><br />
-			<span>I woke up at:
-				<select name="wakeHour"></select>
-				<select name="wakeMinute"></select>
-				<select name="wakeMeridian">
-					<option selected value="AM">AM</option>
-					<option value="PM">PM</option>
-				</select>
-			</span><br />
-			<button type="submit">Submit</button>
-		</form>
+		<div class="data-container">
+			<div class="form-container">
+				<form action="/sleepEntry" method="POST">
+					<span>I went to sleep at:
+						<select name="sleepHour"></select>
+						<select name="sleepMinute"></select>
+						<select name="sleepMeridian">
+							<option value="AM">AM</option>
+							<option selected value="PM">PM</option>
+						</select>
+						<select name="sleepDay">
+							<option value="yesterday">Yesterday</option>
+							<option value="today">Today</option>
+						</select>
+					</span><br />
+					<span>I woke up at:
+						<select name="wakeHour"></select>
+						<select name="wakeMinute"></select>
+						<select name="wakeMeridian">
+							<option selected value="AM">AM</option>
+							<option value="PM">PM</option>
+						</select>
+					</span><br />
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+			<div class="chart-container"></div>
+		</div>
 		<script src="//d3js.org/d3.v4.min.js"></script>
 		<script src="../js/loadGraph.js"></script>
 		<script src="../js/bundle.js"></script>

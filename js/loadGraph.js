@@ -1,5 +1,5 @@
 function getChart() {
-	d3.json('../resources/test.json', function (err, data) {
+	d3.json('../resources/sleepEntries.json', function (err, data) {
 		if (err) {
 			return console.error(err);
 		}
@@ -24,7 +24,7 @@ function getChart() {
 			  .y(function(d) { return y(d.sleptHours); });
 
 
-			var svg = d3.select('body').append('div').attr('class', 'container').append("svg")
+			var svg = d3.select('.chart-container').append("svg")
 			    .attr("width", width + margin.left + margin.right)
 			    .attr("height", height + margin.top + margin.bottom)
 			    .append("g")

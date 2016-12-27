@@ -27,7 +27,7 @@ MongoClient.connect(mongoUrl, function (err, database) {
 });
 
 app.get('/', function (req, res) {
-	db.collection('sleep-times').find().toArray(function(err, results) {
+	db.collection('sleep-entries').find().toArray(function(err, results) {
 		if (err) {
 			console.error(err);
 		}
@@ -35,7 +35,7 @@ app.get('/', function (req, res) {
 			// oh boy. this is getting gross.
 			// Couldn't figure out a good way to get the data from here to the client js for d3 to use
 			// soooooo we're gonna save the data to a file, and read from the file on the client ://// groooossss
-			fs.writeFile(__dirname + '/resources/test.json', JSON.stringify(results), function (error) {
+			fs.writeFile(__dirname + '/resources/sleepEntries.json', JSON.stringify(results), function (error) {
 				if (error) {
 					console.error(error);
 				}
@@ -56,7 +56,7 @@ app.post('/sleepEntry', function (req, res) {
 	data.sleptHours = calculator.sleptHours;
 	data.sleptMinutes = calculator.sleptMinutes;
 
-	db.collection('sleep-times').save(data, function (err, result) {
+	db.collection('sleep-entries').save(data, function (err, result) {
 		if (err) {
 			return console.error(err);
 		}
