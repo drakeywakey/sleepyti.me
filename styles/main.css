@@ -13,8 +13,9 @@ button {
 }
 
 header {
-	align-items: center;;
+	align-items: center;
 	background: #555;
+	border-bottom: 5px solid #4ecdc4;
 	color: #fff;
 	display: flex;
 	height: 50px;
@@ -36,8 +37,14 @@ header h1 {
 
 .form-container {
 	align-items: center;
+	background: #555;
+	border: 5px solid #4ecdc4;
+	border-radius: 5px;
+	color: #4ecdc4;
 	display: flex;
 	height: 300px;
+	margin-top: 20px;
+	text-align: center;
 }
 
 #login-container {
@@ -45,4 +52,18 @@ header h1 {
 	display: flex;
 	justify-content: space-around;
 	width: 200px;
+}
+
+select {
+	background: #555;
+	border-color: #4ecdc4;
+	border-radius: 5px;
+	color: #4ecdc4;
+	height: 25px;
+}
+
+form {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 }
