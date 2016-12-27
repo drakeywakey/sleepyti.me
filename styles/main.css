@@ -67,3 +67,8 @@ form {
 	display: flex;
 	flex-direction: column;
 }
+
+.line, .x-axis, .y-axis {
+	fill: #4ecdc4;
+	stroke: #4ecdc4;
+}
