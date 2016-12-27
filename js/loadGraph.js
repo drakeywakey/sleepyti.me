@@ -4,6 +4,9 @@ function getChart() {
 			return console.error(err);
 		}
 
+		//mongo should be sorting this for me, but I can't figure out why it's not, so whatevs.
+		data = data.sort(function (a,b) { return new Date(a.date) - new Date(b.date); });
+
 		var margin = {top: 20, right: 20, bottom: 30, left: 50},
 	    		width = 960 - margin.left - margin.right,
 	    		height = 500 - margin.top - margin.bottom;

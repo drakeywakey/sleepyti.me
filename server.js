@@ -41,7 +41,6 @@ app.get('/', function (req, res) {
 				}
 				else {
 					res.sendFile(__dirname + '/views/index.html');
-					//res.render('./index.ejs', { sleptHours: false, sleepTimes: results });
 				}
 			});
 		}
