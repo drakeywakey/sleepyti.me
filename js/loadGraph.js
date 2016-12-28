@@ -45,7 +45,6 @@ function getChart() {
 		      .attr("class", "line")
 		      .attr("d", line)
 		      .attr("fill", "none")
-		      .attr("stroke", "steelblue")
 		      .attr("stroke-width", "1.5px");
 
 		  svg.append("g")
