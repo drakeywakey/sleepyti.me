@@ -12,6 +12,7 @@ function getChart() {
 	    		height = 500 - margin.top - margin.bottom;
 
 	    		var parseDate = d3.timeParse("%a %b %d %Y");
+	    		var formatTime = d3.timeFormat("%e %b");
 
 			var x = d3.scaleTime()
 			    .range([0, width]);
@@ -21,7 +22,7 @@ function getChart() {
 
 			var line = d3.line()
 			  .x(function(d) { return x(d.date); })
-			  .y(function(d) { return y(d.sleptHours); });
+			  .y(function(d) { return y(d.sleptHours + d.sleptMinutes / 60); });
 
 
 			var svg = d3.select('.chart-container').append("svg")
@@ -29,6 +30,10 @@ function getChart() {
 			    .attr("height", height + margin.top + margin.bottom)
 			    .append("g")
 			    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+			var div = d3.select("body").append("div")
+				.attr("class", "tooltip")
+				.style("opacity", 0);
 
 			//sanitize the data
 			data.forEach(function(d) {
@@ -61,6 +66,29 @@ function getChart() {
 		      .attr("dy", ".71em")
 		      .style("text-anchor", "end")
 		      .text("Time Slept (hours)");
+
+		      var circle = svg.selectAll("circle")
+			.data(data, function (d) { return d; });
+
+		circle.enter().append("circle")
+			.attr("cy", function (d) { return y(d.sleptHours + d.sleptMinutes / 60); })
+			.attr("cx", function (d, i) { return x(d.date); })
+			.attr("r", 5)
+			.attr("class", "circle")
+			.on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", 0.9);
+            div	.html(formatTime(d.date) + "<br/>" + d.sleptHours + " hrs and " + d.sleptMinutes + " mins")
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+
 		  });
 }
 
