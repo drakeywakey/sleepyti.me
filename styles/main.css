@@ -8,17 +8,20 @@ html {
 }
 
 body {
-	background: red; /* For browsers that do not support gradients */
-  	background: -webkit-linear-gradient(left bottom, #fff, #555); /* For Safari 5.1 to 6.0 */
-  	background: -o-linear-gradient(top right, #fff, #555); /* For Opera 11.1 to 12.0 */
-  	background: -moz-linear-gradient(top right, #fff, #555); /* For Firefox 3.6 to 15 */
-  	background: linear-gradient(top right, #fff, #555); /* Standard syntax */
+	background: #555; /* For browsers that do not support gradients */
+  	background: -webkit-linear-gradient(left bottom, #666, #111); /* For Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(top right, #666, #111); /* For Opera 11.1 to 12.0 */
+  	background: -moz-linear-gradient(top right, #666, #111); /* For Firefox 3.6 to 15 */
+  	background: linear-gradient(top right, #666, #111); /* Standard syntax */
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+body * {
+	background: transparent;
+}
+
 button {
-	background: #555;
 	border: 2px solid #4ecdc4;
 	border-radius: 10px;
 	color: #fff;
@@ -28,7 +31,6 @@ button {
 
 header {
 	align-items: center;
-	background: #555;
 	border-bottom: 5px solid #4ecdc4;
 	color: #fff;
 	display: flex;
@@ -51,7 +53,6 @@ header h1 {
 
 .form-container {
 	align-items: center;
-	background: #555;
 	border: 5px solid #4ecdc4;
 	border-radius: 5px;
 	color: #4ecdc4;
@@ -69,7 +70,6 @@ header h1 {
 }
 
 select {
-	background: #555;
 	border-color: #4ecdc4;
 	border-radius: 5px;
 	color: #4ecdc4;
@@ -82,7 +82,10 @@ form {
 	flex-direction: column;
 }
 
-.line {
-	/*stroke: #4ecdc4;*/
-	stroke: black;
+.line, .x-axis, .y-axis {
+	stroke: #4ecdc4;
+}
+
+.x-axis, .y-axis {
+	fill: #4ecdc4;
 }

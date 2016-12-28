@@ -51,7 +51,7 @@ function getChart() {
 		  svg.append("g")
 		      .attr("class", "x-axis")
 		      .attr("transform", "translate(0," + height + ")")
-		      .call(d3.axisBottom(x));
+		      .call(d3.axisBottom(x).ticks(d3.timeDay.every(1)));
 
 		  svg.append("g")
 		      .attr("class", "y-axis")
